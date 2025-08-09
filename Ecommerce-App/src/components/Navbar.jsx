@@ -1,15 +1,29 @@
-import React, { useState } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import { assets } from '../assets/assets'
-import { NavLink, Link } from 'react-router-dom'
+import { NavLink, Link, useLocation } from 'react-router-dom'
+import { ShopContext } from '../context/ShopContext'
 
 const Navbar = () => {
     const [visible, setVisible] = useState(false)
+    const { setShowSearch } = useContext(ShopContext);
+    const location = useLocation();
+    const [searchIcon, setSearchIcon] = useState(false)
+
+    useEffect(() => {
+        if (location.pathname.includes("collection")) {
+            setSearchIcon(true)
+        }
+        else {
+            setSearchIcon(false)
+        }
+
+    }, [location])
     return (
         <div className='flex items-center justify-between py-5 font-medium'>
             <NavLink to="/"> <img src={assets.logo} alt="Logo" className='w-36 logo' /></NavLink>
             <ul className='hidden sm:flex gap-5 text-sm text-gray-700'>
                 <NavLink to="/" className="flex flex-col items-center gap-1">
-                    <p>Home</p>
+                    <p>HOME</p>
                     <hr className='w-2/4  h-[1.5px] bg-gray-700 hidden' />
                 </NavLink>
                 <NavLink to="/collections" className="flex flex-col items-center gap-1">
@@ -27,7 +41,7 @@ const Navbar = () => {
 
             </ul>
             <div className="flex items-center gap-6">
-                <img src={assets.search_icon} className='w-5 cursor-pointer' alt="" />
+                {searchIcon && <img onClick={() => setShowSearch(true)} src={assets.search_icon} className='w-5 cursor-pointer' alt="" />}
                 <div className="group relative">
                     <img src={assets.profile_icon} className='w-5 cursor-pointer' alt="" />
                     <div className="group-hover:block hidden absolute dropdown-menu right-0  pt-4">
@@ -44,7 +58,7 @@ const Navbar = () => {
                 </Link>
                 <img onClick={() => setVisible(true)} src={assets.menu_icon} className='w-5 cursor-pointer sm:hidden' alt="" />
             </div>
-            {/* Sidebar Menu For snaller screen */}
+            {/* Sidebar Menu For smaller screen */}
             <div className={`absolute top-0 right-0 bottom-0 overflow-hidden bg-white transition-all ${visible ? " w-full" : "w-0"}`}>
                 <div className="flex flex-col text-gray-600">
                     <div onClick={() => setVisible(false)} className="flex items-center gap-4 p-3 cursor-pointer">
@@ -52,7 +66,7 @@ const Navbar = () => {
                         <p>Back</p>
                     </div>
                     <NavLink className="py-2 pl-6 border" onClick={() => setVisible(false)} to="">HOME</NavLink>
-                    <NavLink className="py-2 pl-6 border" onClick={() => setVisible(false)} to="/collection">COLLECTION</NavLink>
+                    <NavLink className="py-2 pl-6 border" onClick={() => setVisible(false)} to="/collections">COLLECTION</NavLink>
                     <NavLink className="py-2 pl-6 border" onClick={() => setVisible(false)} to="/about">ABOUT</NavLink>
                     <NavLink className="py-2 pl-6 border" onClick={() => setVisible(false)} to="contact">CONTACT</NavLink>
 
