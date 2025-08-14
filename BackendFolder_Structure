@@ -1,0 +1,16 @@
+Server.js ---> Main entry point file
+multer package " allowed us to store the images  on cloudinary storage
+jsonwebtoke : for authentication login and signup
+mongoose : manage database connectivity
+nodemon: restsrt backend whenever code changes 
+razor pay and stripe : to setup online payment integration
+bcrypt: encrypt the users password and store in database
+validator: check data valid or not comes from user
+
+Folders
+
+config: store al the configurations
+middleware: store all the backend middlewares
+models: store the models of mongoose  where we define the schema
+controllers:  manage all tghe logiocs of backend
+routes:Manage the express servers routes
