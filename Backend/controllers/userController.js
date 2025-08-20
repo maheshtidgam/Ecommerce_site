@@ -9,6 +9,27 @@ const createToken = (id) => {
 // Route for user login
 const loginUser = async (req, res) => {
 
+    try {
+        const { email, password } = req.body
+        const user = await UserModel.findOne({ email })
+        if (!user) {
+            return res.status(400).json({ success: false, message: "User not found" })
+        }
+        const isMatch = await bycrypt.compare(password, user.password)
+        if (isMatch) {
+            const token = createToken(user._id)
+            res.json({ success: true, message: "User logged in successfully", token })
+        } else {
+            res.status(400).json({ success: false, message: "Invalid password" })
+            if (!isMatch) {
+                return res.status(400).json({ success: false, message: "Invalid password" })
+            }
+        }
+
+    } catch (error) {
+        console.log(error)
+        res.status(500).json({ success: false, message: error.message })
+    }
 }
 
 
@@ -45,7 +66,19 @@ const registerUser = async (req, res) => {
 
 // Route for admin login
 const adminLogin = async (req, res) => {
+    try {
 
+        const { email, password } = req.body
+        if (email === process.env.ADMIN_EMAIL && password === process.env.ADMIN_PASSWORD) {
+            {
+                const token = jwt.sign(email + password, process.env.JWT_SECRET)
+                res.json({ success: true, message: "Admin logged in successfully", token })
+            }
+        }
+    } catch (error) {
+        console.log(error)
+        res.status(500).json({ success: false, message: error.message })
+    }
 }
 
 export { loginUser, registerUser, adminLogin }
