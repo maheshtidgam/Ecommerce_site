@@ -8,17 +8,22 @@ const Cart = () => {
   const { products, currency, cartItems, updateQuantity, navigate } = useContext(ShopContext)
   const [cartData, setCartData] = useState([])
   useEffect(() => {
-    const tempData = []
-    for (const item in cartItems) {
-      for (const size in cartItems[item]) {
-        if (cartItems[item][size] > 0) {
-          tempData.push({ id: item, size: size, quantity: cartItems[item][size] })
-        }
 
+    if (products.length > 0) {
+      const tempData = []
+      for (const item in cartItems) {
+        for (const size in cartItems[item]) {
+          if (cartItems[item][size] > 0) {
+            tempData.push({ id: item, size: size, quantity: cartItems[item][size] })
+          }
+
+        }
       }
+      setCartData(tempData)
+
     }
-    setCartData(tempData)
-  }, [cartItems])
+
+  }, [cartItems, products])
   return (
     <div className='border-t pt-14'>
       <div className="text-2xl mb-3">
@@ -26,16 +31,16 @@ const Cart = () => {
       </div>
       <div>
         {
-          cartData.map((item, index) => {
+          cartData?.map((item, index) => {
             const productData = products.find(product => product._id === item.id)
             return (
               <div className="py-4 border-t border-b text-gray-700 grid grid-cols-[4fr_0.5fr_0.5fr] sm:grid-cols-[4fr_2fr_0.5fr] items-center gap-4" key={item.id + item.size}>
                 <div className="flex items-start gap-6">
-                  <img src={productData.image[0]} alt="" className="w-16 sm:w-20" />
+                  <img src={productData?.image[0]} alt="" className="w-16 sm:w-20" />
                   <div className="">
-                    <p className="text-xs sm:text-lg font-medium">{productData.name}</p>
+                    <p className="text-xs sm:text-lg font-medium">{productData?.name}</p>
                     <div className="flex items-center gap-5 mt-2">
-                      <p className="">{currency} {productData.price}</p>
+                      <p className="">{currency} {productData?.price}</p>
                       <p className="px-2 sm:px-3 sm:py-1 border bg-slate-50">{item.size}</p>
                     </div>
                   </div>
@@ -52,7 +57,7 @@ const Cart = () => {
         <div className="w-full sm:w-[450px]">
           <CartTotal />
           <div className="w-full text-end">
-           <button onClick={() => navigate("/place-order")} className='bg-black text-white text-sm my-8 py-3 px-8 '>PROCEED TO CHECKOUT</button>
+            <button onClick={() => navigate("/place-order")} className='bg-black text-white text-sm my-8 py-3 px-8 '>PROCEED TO CHECKOUT</button>
           </div>
         </div>
       </div>
