@@ -150,12 +150,25 @@ const ShopContextProvider = (props) => {
         getProductsData()
     }, [])
 
+    // useEffect(() => {
+    //     if (!token && localStorage.getItem('token')) {
+    //         setToken(localStorage.getItem('token'))
+    //         getUserCart(localStorage.getItem('token'))
+    //     }
+    // }, [token])
     useEffect(() => {
-        if (!token && localStorage.getItem('token')) {
-            setToken(localStorage.getItem('token'))
-            getUserCart(localStorage.getItem('token'))
+        const savedToken = localStorage.getItem('token');
+        if (savedToken) {
+            setToken(savedToken);
         }
-    }, [token])
+    }, []);
+
+    useEffect(() => {
+        if (token) {
+            getUserCart(token);
+        }
+    }, [token]);
+
 
     const value = {
         products, currency, delivery_fee, search, setSearch, showSearch, setShowSearch,

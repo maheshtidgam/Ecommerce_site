@@ -36,7 +36,6 @@ const addProduct = async (req, res) => {
         }
 
         // console.log(name, description, price, category, subCategory, sizes, bestseller);
-        console.log(productData);
         const product = new ProductModel(productData)
         await product.save()
         res.json({ success: true, message: "Product added successfully" })

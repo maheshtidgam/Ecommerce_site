@@ -6,6 +6,7 @@
 
 a.active hr {
     display: block;
+
 }
 
 * {
@@ -29,6 +30,6 @@ a.active hr {
     }
 
     .logo {
-         background-color: white;
+        background-color: white;
     }
 }

@@ -6,8 +6,10 @@ const Footer = () => {
         <div className=''>
             <div className="flex flex-col sm:grid grid-cols-[3fr_1fr_1fr] gap-4 my-10 mt-40 text-sm ">
                 <div className="">
-                    <img src={assets.logo} className="w-32 mb-5" alt="" />
-                    <p className="w-full md:w-2/3 text-gray-600">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vel aut, maiores inventore pariatur fugiat molestiae temporibus quo odio sed aperiam labore. Dolores quidem quo saepe distinctio ducimus nobis. Nesciunt, eaque.</p>
+                    <img src={assets.logo2} className="w-32 mb-5" alt="" />
+                    <p className="w-full md:w-2/3 text-gray-600">Step into the world of <span className="font-semibold text-gray-800">Styleverse</span> —
+                        where comfort meets elegance. Our mission is to bring you premium quality,
+                        timeless designs, and the best shopping experience, every time.</p>
                 </div>
                 <div>
                     <p className="text-xl font-medium mb-5">COMPANY</p>
@@ -22,13 +24,13 @@ const Footer = () => {
                     <p className="text-xl font-medium mb-5">GET IN TOUCH</p>
                     <ul className="flex flex-col gap-1 text-gray-600">
                         <li>+1234567890</li>
-                        <li>contact@forver.com</li>
+                        <li>contact@styleverse.com</li>
                     </ul>
                 </div>
             </div>
             <div className="">
-                <hr  className='w-full'/>
-                <p className="py-5 text-sm text-center">Copyright 2025@forever.com - All Rights Reserved</p>
+                <hr className='w-full' />
+                <p className="py-5 text-sm text-center">Copyright 2025@Styleverse.com - All Rights Reserved</p>
             </div>
         </div>
     )

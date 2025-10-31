@@ -12,10 +12,10 @@ const About = () => {
       <div className="my-10 flex flex-col md:flex-row gap-16">
         <img src={assets.about_img} alt="" className="w-full md:max-w-[450px]" />
         <div className="flex flex-col justify-center gap-6 md:w-2/4 text-gray-600">
-          <p className="">Forever in the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.  </p>
+          <p className="">Styleverse in the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.  </p>
           <p className="">Since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
           <b className="text-gray-800">Our Mission</b>
-          <p>Our mission at Forever is to provide a unique and memorable experience for our customers by offering a wide range of high-quality products at competitive prices.</p>
+          <p>Our mission at Styleverse is to provide a unique and memorable experience for our customers by offering a wide range of high-quality products at competitive prices.</p>
         </div>
       </div>
       <div className="text-xl py-4">
