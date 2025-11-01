@@ -32,7 +32,7 @@ import { assets } from '../assets/assets'
 
 const Hero = () => {
     return (
-        <div className='relative bg-gradient-to-r from-gray-50 to-gray-100 border border-gray-300'>
+        <div className='relative bg-gradient-to-r from-gray-50 to-gray-100 border border-gray-300 z-[-1]'>
             <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
                 <div className='grid md:grid-cols-2 gap-8 items-center min-h-[500px] py-12'>
                     {/* Left Content */}
@@ -57,7 +57,7 @@ const Hero = () => {
 
                     {/* Right Image */}
                     <div className='relative'>
-                        <div className='relative overflow-hidden rounded-lg shadow-xl'>
+                        <div className='relative overflow-hidden rounded-lg shadow-xl '>
                             <img
                                 src={assets.hero_img}
                                 alt="Hero"

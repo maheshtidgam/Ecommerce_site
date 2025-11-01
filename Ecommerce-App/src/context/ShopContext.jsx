@@ -22,6 +22,11 @@ const ShopContextProvider = (props) => {
 
 
     const addToCart = async (itemId, size) => {
+        if (!token) {
+            toast.error("Please login first!");
+            navigate('/login');  // redirect to login page
+            return;
+        }
         if (!size) {
             toast.error("Please select a size")
             return;
